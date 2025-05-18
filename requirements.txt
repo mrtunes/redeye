@@ -1,0 +1,2 @@
+# No external dependencies required - using tkinter which comes with Python 
+rumps==0.4.0 
