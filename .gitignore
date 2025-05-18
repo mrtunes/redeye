@@ -1,7 +1,4 @@
-# Python virtual environment
-venv/
-
-# Python bytecode
+# Python
 __pycache__/
 *.py[cod]
 *$py.class
@@ -10,9 +7,22 @@ __pycache__/
 dist/
 build/
 *.egg-info/
+*.egg
 
-# macOS system files
+# Virtual Environment
+venv/
+env/
+
+# PyInstaller
+*.spec
+
+# macOS
 .DS_Store
+.AppleDouble
+.LSOverride
+
+# Logs
+*.log
 
 # IDE files
 .idea/
