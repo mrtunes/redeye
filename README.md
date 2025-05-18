@@ -1,55 +1,50 @@
-# Stay Awake App
+# StayAwake
 
-A macOS status bar application that prevents your computer from going to sleep for a specified duration.
+A simple macOS menu bar application that prevents your computer from sleeping. Built with Python and rumps.
 
 ## Features
-- Lives in your menu bar for easy access (⚡️)
-- One-click activation: just select a duration to start
-- Shows remaining time in the menu bar (⏰)
-- Quick stop option (⌘S)
-- Automatically stops when time is up
 
-## Requirements
-- macOS
-- Python 3.6 or higher
-- rumps package
+- Menu bar interface with easy access
+- Set sleep prevention for 15, 30, 60, or 120 minutes
+- Visual indicators showing active state (⚡️ when idle, ⏰ when active)
+- Countdown timer showing remaining time
+- Native macOS integration
 
 ## Installation
 
-1. Clone or download this repository
-2. Create and activate a virtual environment:
+1. Download the latest release
+2. Move StayAwake.app to your Applications folder
+3. Launch the app
+
+To build from source:
+
 ```bash
+# Create virtual environment
 python3 -m venv venv
 source venv/bin/activate
-```
-3. Install the required dependencies:
-```bash
+
+# Install dependencies
 pip install -r requirements.txt
+
+# Build the app
+pyinstaller --onedir --windowed --name "StayAwake" stay_awake.py
 ```
 
 ## Usage
 
-1. Make sure your virtual environment is activated:
-```bash
-source venv/bin/activate  # if not already activated
-```
+1. Click the menu bar icon (⚡️)
+2. Select desired duration (15, 30, 60, or 120 minutes)
+3. The icon will change to ⏰ with a countdown
+4. To stop early, click the icon and select "Stop"
 
-2. Run the application:
-```bash
-python stay_awake.py
-```
+## Auto-start at Login
 
-3. The app will appear in your menu bar with a lightning bolt (⚡️)
-4. Click the icon and select a duration (15, 30, 60, or 120 minutes) to start
-5. The icon will change to a clock (⏰) showing remaining time
-6. To stop early:
-   - Select "Stop" from the menu, or
-   - Use the keyboard shortcut ⌘S
+1. Open System Settings
+2. Go to General > Login Items
+3. Click the "+" button
+4. Select StayAwake.app from your Applications folder
 
-## How it Works
+## Requirements
 
-The application uses macOS's built-in `caffeinate` command to prevent the system from sleeping. The `-i` flag prevents the system from idle sleeping.
-
-## Note
-
-The application must be running for sleep prevention to remain active. Closing the application will restore normal sleep behavior. 
+- macOS 10.13 or later
+- Python 3.8 or later (for building from source) 
