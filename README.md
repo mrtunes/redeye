@@ -12,13 +12,17 @@ A simple macOS menu bar application that prevents your computer from sleeping. B
 
 ## Installation
 
-1. Download the latest release
+1. Download the latest release from [GitHub Releases](https://github.com/mrtunes/redeye/releases)
 2. Move RedEye.app to your Applications folder
 3. Launch the app
 
 To build from source:
 
 ```bash
+# Clone the repository
+git clone https://github.com/mrtunes/redeye.git
+cd redeye
+
 # Create virtual environment
 python3 -m venv venv
 source venv/bin/activate
