@@ -1,3 +1,5 @@
 # No external dependencies required - using tkinter which comes with Python 
 rumps==0.4.0
-py2app==0.28.7 
+py2app==0.28.7
+pyinstaller==6.13.0
+pillow==10.2.0  # For icon generation 
