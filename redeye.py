@@ -11,16 +11,16 @@ logging.basicConfig(
     level=logging.DEBUG,
     format='%(asctime)s - %(levelname)s - %(message)s',
     handlers=[
-        logging.FileHandler(os.path.expanduser('~/stay_awake.log')),
+        logging.FileHandler(os.path.expanduser('~/redeye.log')),
         logging.StreamHandler(sys.stdout)
     ]
 )
 
-class StayAwakeApp(rumps.App):
+class RedEyeApp(rumps.App):
     def __init__(self):
         try:
-            logging.info("Initializing StayAwakeApp")
-            super().__init__("⚡️")  # Using text indicator instead of icon file
+            logging.info("Initializing RedEyeApp")
+            super().__init__("👁️")  # Changed icon to eye emoji
             self.caffeinate_process = None
             self.timer_thread = None
             self.remaining_time = 0
@@ -37,7 +37,7 @@ class StayAwakeApp(rumps.App):
             ]
             # Hide the Stop button initially
             self.menu["Stop"].hidden = True
-            logging.info("StayAwakeApp initialized successfully")
+            logging.info("RedEyeApp initialized successfully")
         except Exception as e:
             logging.error(f"Error initializing app: {str(e)}", exc_info=True)
             raise
@@ -65,14 +65,14 @@ class StayAwakeApp(rumps.App):
             self.timer_thread.daemon = True
             self.timer_thread.start()
             
-            self.title = f"⏰ {self.remaining_time}m"
+            self.title = f"🔴 {self.remaining_time}m"  # Changed to red circle when active
             self.menu["Stop"].hidden = False
             logging.info("Timer started successfully")
             
         except Exception as e:
             logging.error(f"Error starting timer: {str(e)}", exc_info=True)
             rumps.notification(
-                title="Stay Awake Error",
+                title="RedEye Error",
                 subtitle="Failed to start",
                 message=str(e)
             )
@@ -81,7 +81,7 @@ class StayAwakeApp(rumps.App):
         try:
             logging.info("Starting timer update loop")
             while self.running and self.remaining_time > 0:
-                self.title = f"⏰ {self.remaining_time}m"
+                self.title = f"🔴 {self.remaining_time}m"  # Changed to red circle when active
                 time.sleep(60)
                 self.remaining_time -= 1
 
@@ -98,7 +98,7 @@ class StayAwakeApp(rumps.App):
                 self.running = False
                 self.caffeinate_process.terminate()
                 self.caffeinate_process = None
-                self.title = "⚡️"
+                self.title = "👁️"  # Changed icon to eye emoji
                 self.menu["Stop"].hidden = True
                 logging.info("Caffeinate process stopped successfully")
         except Exception as e:
@@ -106,8 +106,8 @@ class StayAwakeApp(rumps.App):
 
 if __name__ == '__main__':
     try:
-        logging.info("Starting StayAwakeApp")
-        StayAwakeApp().run()
+        logging.info("Starting RedEyeApp")
+        RedEyeApp().run()
     except Exception as e:
         logging.error(f"Fatal error in main: {str(e)}", exc_info=True)
-        sys.exit(1) 
+        sys.exit(1)
